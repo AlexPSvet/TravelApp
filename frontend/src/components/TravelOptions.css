@@ -1,3 +1,17 @@
+.travels-container {
+    padding: 0rem 5rem;
+    margin: 3rem 0;
+}
+
+.grid-title {
+    font-size: 2rem;
+    font-family: 'PlaywriteGBJ', sans-serif;
+
+    color: #bf6a2e;
+
+    margin-bottom: 2rem;
+}
+
 .travel-grid {
     display: grid;
 
@@ -8,25 +22,4 @@
         );
 
     gap: 2rem;
-
-    padding: 2rem 5%;
-}
-
-.travel-card {
-    padding: 1.5rem;
-
-    border-radius: 1rem;
-
-    background: white;
-
-    box-shadow:
-        0 4px 12px
-        rgba(0, 0, 0, 0.1);
-
-    transition:
-        transform 0.2s ease;
-}
-
-.travel-card:hover {
-    transform: translateY(-5px);
 }

@@ -6,6 +6,7 @@ const HeroSection = ({
     description,
     backgroundColor = "#a0645a",
     textColor = "#FFFFFF",
+    minHeight = "80vh",
     children,
 }) => {
     return (
@@ -14,6 +15,7 @@ const HeroSection = ({
             style={{
                 backgroundColor,
                 color: textColor,
+                minHeight
             }}
         >
             <div className="hero-content">
