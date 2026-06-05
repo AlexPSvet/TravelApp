@@ -1,17 +1,72 @@
 .navbar {
+    min-height: 2rem;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    padding: 2rem;
+    margin: 0 auto;
+    padding: 1.6rem 4rem;
 
     background: #945B51;
     color: white;
-    border-bottom: 0.2rem solid #784A43;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
+/* Navbar logo style */
+.navbar-logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+/* Navbar links style */
 .nav-links {
     display: flex;
+    margin: 0.5rem;
+    gap: 3rem;
+}
+
+.nav-link {
+    border-radius: 0.8rem;
+    border: 0;
+    font-size: 1.25rem;
     font-family: 'PlaywriteGBJ', sans-serif;
-    gap: 1.5rem;
+    
+    background: transparent;
+    color: white;
+
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.nav-link:hover {
+    transform: translateY(-2px);
+    color: #F6D7A7;
+}
+
+.nav-link:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 2px;
+}
+
+.nav-link.active {
+    color: #F6D7A7;
+}
+
+/* Navbar profile style */
+.profile-button {
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+
+    background: rgba(255,255,255,0.15);
+
+    cursor: pointer;
+
+    transition: background 0.2s ease;
+}
+
+.profile-button:hover {
+    background: rgba(255,255,255,0.25);
 }
