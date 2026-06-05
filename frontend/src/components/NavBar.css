@@ -1,0 +1,17 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 2rem;
+
+    background: #945B51;
+    color: white;
+    border-bottom: 0.2rem solid #784A43;
+}
+
+.nav-links {
+    display: flex;
+    font-family: 'PlaywriteGBJ', sans-serif;
+    gap: 1.5rem;
+}
