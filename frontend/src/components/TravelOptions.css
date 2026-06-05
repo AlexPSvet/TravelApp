@@ -1,0 +1,32 @@
+.travel-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(300px, 1fr)
+        );
+
+    gap: 2rem;
+
+    padding: 2rem 5%;
+}
+
+.travel-card {
+    padding: 1.5rem;
+
+    border-radius: 1rem;
+
+    background: white;
+
+    box-shadow:
+        0 4px 12px
+        rgba(0, 0, 0, 0.1);
+
+    transition:
+        transform 0.2s ease;
+}
+
+.travel-card:hover {
+    transform: translateY(-5px);
+}

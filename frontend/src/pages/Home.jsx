@@ -5,7 +5,6 @@ import HeroSection from '../components/HeroSection';
 import AnimatedTitle from '../components/AnimatedTitle';
 
 const Home = () => {
-
     return (
         <>
             <NavBar />

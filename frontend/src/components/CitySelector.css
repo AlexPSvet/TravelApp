@@ -1,0 +1,16 @@
+.city-selector {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+    padding: 2rem;
+}
+
+.city-selector input {
+    padding: 0.75rem 1rem;
+
+    border-radius: 0.75rem;
+    border: 1px solid #ddd;
+
+    font-size: 1rem;
+}
