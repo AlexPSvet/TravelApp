@@ -1,21 +1,10 @@
 /**
  * Seed script — populates the database with 6 default travel packages.
- *
- * Usage (from /backend):
- *   node seed.js
- *
- * Or via Docker:
- *   docker compose exec backend node seed.js
- *
- * The script is idempotent: it wipes existing Travel and Itinerary documents
- * before inserting fresh data, so it is safe to run multiple times.
  */
 
 require('dotenv').config();
 const mongoose = require('mongoose');
 const { Travel, Itinerary } = require('./models/travel');
-
-/* ─── Seed data ─────────────────────────────────────────────────────────── */
 
 const seedData = [
   /* ── Paris ── */
@@ -24,6 +13,7 @@ const seedData = [
       title:       'Weekend in Paris',
       description: 'Discover the Eiffel Tower, Montmartre, and the best Parisian cafés in a romantic long weekend.',
       destination: 'Paris',
+      coverImage:  'https://plus.unsplash.com/premium_photo-1661919210043-fd847a58522d?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cGFyJUMzJUFEc3xlbnwwfHwwfHx8MA%3D%3D',
       country:     'France',
       continent:   'Europe',
       tags:        ['Culture', 'Food', 'City Break', 'Romance'],
@@ -72,6 +62,7 @@ const seedData = [
       title:       'Fashion & Design in Milan',
       description: 'Immerse yourself in Italian fashion, world-class cuisine, and Renaissance art in Italy\'s style capital.',
       destination: 'Milan',
+      coverImage:  'https://storage.googleapis.com/mytour-prod/blog/top-7-curiosities-about-milan_2020-10-wp3823865-1-scaled.jpg',
       country:     'Italy',
       continent:   'Europe',
       tags:        ['Fashion', 'Design', 'Food', 'Art'],
@@ -121,6 +112,7 @@ const seedData = [
       title:       'Eternal City: Rome in Depth',
       description: 'Walk through 2,500 years of history — from the Colosseum to Vatican City, one iconic landmark at a time.',
       destination: 'Rome',
+      coverImage:  'https://i.natgeofe.com/k/a6c9f195-de20-445d-9d36-745ef56042c5/OG_Colosseum_Ancient-Rome_KIDS_1122_3x2.jpg',
       country:     'Italy',
       continent:   'Europe',
       tags:        ['History', 'Culture', 'Food', 'Art'],
@@ -171,6 +163,7 @@ const seedData = [
       title:       'Barcelona: Gaudí & the Sea',
       description: 'Sun, Gaudí masterpieces, tapas, and vibrant nightlife — Barcelona has it all.',
       destination: 'Barcelona',
+      coverImage:  'https://barcelonesite.fr/images/barcelona_2.jpg',
       country:     'Spain',
       continent:   'Europe',
       tags:        ['Architecture', 'Beach', 'Food', 'Nightlife'],
@@ -222,6 +215,7 @@ const seedData = [
       title:       'Madrid: Art, Flamenco & Tapas',
       description: 'Dive into Spain\'s vibrant capital — world-class museums, lively plazas, and legendary nightlife.',
       destination: 'Madrid',
+      coverImage:  'https://images.trvl-media.com/place/178281/edbf43cf-0496-4327-900f-411c38682541.jpg',
       country:     'Spain',
       continent:   'Europe',
       tags:        ['Art', 'Food', 'Nightlife', 'Culture'],
@@ -272,6 +266,7 @@ const seedData = [
       title:       'Moscow: Red Square & Beyond',
       description: 'Explore the grandeur of Russia\'s capital — from the Kremlin and Red Square to hidden Soviet-era gems.',
       destination: 'Moscow',
+      coverImage:  'https://www.isango.com/theguidebook/wp-content/uploads/2022/02/Moscow-1.1.jpg',
       country:     'Russia',
       continent:   'Europe',
       tags:        ['History', 'Architecture', 'Culture', 'Winter'],
@@ -319,8 +314,6 @@ const seedData = [
   },
 ];
 
-/* ─── Run ────────────────────────────────────────────────────────────────── */
-
 async function seed() {
   await mongoose.connect(process.env.MONGO_URI);
   console.log('Connected to MongoDB');
@@ -357,7 +350,7 @@ async function seed() {
       itinerary: itinerary._id,
     });
 
-    console.log(`  ✓ ${entry.travel.title}`);
+    console.log(`  OK ${entry.travel.title}`);
   }
 
   console.log('\nSeeding complete.');

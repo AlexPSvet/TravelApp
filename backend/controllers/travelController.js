@@ -34,34 +34,29 @@ function calcPricePerPerson(itinerary, maxGroupSize) {
 async function getAllTravels(req, res) {
   try {
     const travels = await Travel.find({ status: 'published' })
-      .select('title description rating pricePerPerson coverImage destination country tags maxGroupSize itinerary')
+      .select('title rating pricePerPerson coverImage destination country tags difficulty itinerary')
       .populate({
         path: 'itinerary',
-        select: 'transports.origin stops.nights',
+        select: 'stops.nights',
       })
       .lean();
 
     const result = travels.map((t) => {
-      const transports = t.itinerary?.transports ?? [];
-      const stops      = t.itinerary?.stops ?? [];
-
-      const departureCity = transports.length > 0 ? transports[0].origin : null;
-      const totalNights   = stops.reduce((sum, s) => sum + (s.nights || 0), 0);
-      const duration      = totalNights > 0 ? `${totalNights} days` : null;
+      const stops     = t.itinerary?.stops ?? [];
+      const totalNights = stops.reduce((sum, s) => sum + (s.nights || 0), 0);
+      const duration    = totalNights > 0 ? `${totalNights} days` : null;
 
       return {
         _id:           t._id,
         title:         t.title,
-        description:   t.description,
-        rating:        t.rating,
-        departureCity,
         destination:   t.destination,
+        country:       t.country,
         coverImage:    t.coverImage ?? null,
+        rating:        t.rating,
         pricePerPerson: t.pricePerPerson,
         duration,
-        maxGroupSize:  t.maxGroupSize ?? null,
-        country:       t.country,
         tags:          t.tags ?? [],
+        difficulty:    t.difficulty,
       };
     });
 

@@ -10,7 +10,6 @@ const TravelsPage = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const [departureCity, setDepartureCity] = useState('');
     const [destinationCity, setDestinationCity] = useState('');
 
     useEffect(() => {
@@ -24,21 +23,12 @@ const TravelsPage = () => {
             .finally(() => setLoading(false));
     }, []);
 
-    const filteredTravels = travels.filter((travel) => {
-        const departureMatch =
-            departureCity === '' ||
-            (travel.departureCity ?? '')
-                .toLowerCase()
-                .includes(departureCity.toLowerCase());
-
-        const destinationMatch =
-            destinationCity === '' ||
-            (travel.destination ?? '')
-                .toLowerCase()
-                .includes(destinationCity.toLowerCase());
-
-        return departureMatch && destinationMatch;
-    });
+    const filteredTravels = travels.filter((travel) =>
+        destinationCity === '' ||
+        (travel.destination ?? '')
+            .toLowerCase()
+            .includes(destinationCity.toLowerCase())
+    );
 
     return (
         <>

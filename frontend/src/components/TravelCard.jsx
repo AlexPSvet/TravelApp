@@ -1,64 +1,79 @@
 import "./TravelCard.css";
 
+const DIFFICULTY_LABEL = {
+    easy:        { label: 'Easy',       className: 'badge--easy' },
+    moderate:    { label: 'Moderate',   className: 'badge--moderate' },
+    challenging: { label: 'Challenging', className: 'badge--challenging' },
+};
+
 const TravelCard = ({
     title,
-    rating,
-    departureCity,
     destination,
+    country,
     coverImage,
+    rating,
     pricePerPerson,
     duration,
-    maxGroupSize,
+    tags = [],
+    difficulty,
 }) => {
+    const visibleTags = tags.slice(0, 2);
+    const diff = DIFFICULTY_LABEL[difficulty];
+
     return (
         <article className="travel-card">
-            <img
-                src={coverImage}
-                alt={title}
-                className="travel-card-image"
-            />
 
-            <div className="travel-card-content">
-                <div className="travel-card-header">
-                    <h3>{title}</h3>
+            <div className="travel-card-image-wrapper">
+                <img
+                    src={coverImage ?? '/placeholder.jpg'}
+                    alt={title}
+                    className="travel-card-image"
+                />
+                {rating != null && (
+                    <span className="travel-card-rating">⭐ {rating}</span>
+                )}
+            </div>
 
-                    <span className="travel-rating">
-                        ⭐ {rating}
+            <div className="travel-card-body">
+
+                <div className="travel-card-meta">
+                    <span className="travel-card-location">
+                        {destination}{country ? `, ${country}` : ''}
                     </span>
+                    {diff && (
+                        <span className={`travel-card-badge ${diff.className}`}>
+                            {diff.label}
+                        </span>
+                    )}
                 </div>
 
-                <p className="travel-route">
-                    📍 {departureCity} → {destination}
-                </p>
+                <h3 className="travel-card-title">{title}</h3>
 
-                {duration && (
-                    <p className="travel-duration">
-                        🗓️ {duration}
-                    </p>
-                )}
-
-                {maxGroupSize && (
-                    <p className="travel-travelers">
-                        👥 {maxGroupSize} travelers
-                    </p>
-                )}
-
-                <div className="travel-footer">
-                    <div>
-                        <p className="price-label">
-                            Average Price
-                        </p>
-
-                        <p className="travel-price">
-                            ${pricePerPerson}
-                            <span>/person</span>
-                        </p>
+                {visibleTags.length > 0 && (
+                    <div className="travel-card-tags">
+                        {visibleTags.map((tag) => (
+                            <span key={tag} className="travel-tag">{tag}</span>
+                        ))}
                     </div>
+                )}
 
-                    <button className="travel-btn">
-                        View Trip
-                    </button>
+                <hr className="travel-card-divider" />
+
+                <div className="travel-card-footer">
+                    <div className="travel-card-info">
+                        {duration && (
+                            <span className="travel-card-duration">🗓 {duration}</span>
+                        )}
+                        {pricePerPerson != null && (
+                            <span className="travel-card-price">
+                                ${pricePerPerson}
+                                <span className="travel-card-price-unit"> /person</span>
+                            </span>
+                        )}
+                    </div>
+                    <button className="travel-card-btn">View Trip →</button>
                 </div>
+
             </div>
         </article>
     );

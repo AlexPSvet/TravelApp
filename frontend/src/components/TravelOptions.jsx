@@ -12,16 +12,14 @@ const TravelOptions = ({ travels }) => {
                     <TravelCard
                         key={travel._id}
                         title={travel.title}
-                        description={travel.description}
-                        rating={travel.rating}
-                        departureCity={travel.departureCity}
                         destination={travel.destination}
+                        country={travel.country}
                         coverImage={travel.coverImage}
+                        rating={travel.rating}
                         pricePerPerson={travel.pricePerPerson}
                         duration={travel.duration}
-                        maxGroupSize={travel.maxGroupSize}
-                        country={travel.country}
                         tags={travel.tags}
+                        difficulty={travel.difficulty}
                     />
                 ))}
             </div>
