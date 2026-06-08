@@ -4,6 +4,7 @@ import './App.css';
 import Home from './pages/Home';
 import Publish from './pages/Publish';
 import Travels from './pages/Travels';
+import TravelDetail from './pages/TravelDetail';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/publish" element={<Publish />} />
         <Route path="/travels" element={<Travels />} />
+        <Route path="/travels/:slug" element={<TravelDetail />} />
       </Routes>
     </BrowserRouter>
   );

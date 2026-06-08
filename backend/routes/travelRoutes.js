@@ -14,10 +14,10 @@ router.get('/', getAllTravels);
 // POST /api/travels
 router.post('/', createTravel);
 
-// GET /api/travels/:id
-router.get('/:id', getTravel);
+// GET /api/travels/:slug
+router.get('/:slug', getTravel);
 
-// PATCH /api/travels/:id
-router.patch('/:id', updateTravel);
+// PATCH /api/travels/:slug
+router.patch('/:slug', updateTravel);
 
 module.exports = router;

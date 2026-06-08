@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import "./TravelCard.css";
 
 const DIFFICULTY_LABEL = {
@@ -7,6 +8,7 @@ const DIFFICULTY_LABEL = {
 };
 
 const TravelCard = ({
+    travelId,
     title,
     destination,
     country,
@@ -17,6 +19,7 @@ const TravelCard = ({
     tags = [],
     difficulty,
 }) => {
+    const navigate = useNavigate();
     const visibleTags = tags.slice(0, 2);
     const diff = DIFFICULTY_LABEL[difficulty];
 
@@ -71,7 +74,12 @@ const TravelCard = ({
                             </span>
                         )}
                     </div>
-                    <button className="travel-card-btn">View Trip →</button>
+                    <button
+                        className="travel-card-btn"
+                        onClick={() => navigate(`/travels/${travelId}`)}
+                    >
+                        View Trip →
+                    </button>
                 </div>
 
             </div>

@@ -34,7 +34,7 @@ function calcPricePerPerson(itinerary, maxGroupSize) {
 async function getAllTravels(req, res) {
   try {
     const travels = await Travel.find({ status: 'published' })
-      .select('title rating pricePerPerson coverImage destination country tags difficulty itinerary')
+      .select('slug title rating pricePerPerson coverImage destination country tags difficulty itinerary')
       .populate({
         path: 'itinerary',
         select: 'stops.nights',
@@ -47,7 +47,7 @@ async function getAllTravels(req, res) {
       const duration    = totalNights > 0 ? `${totalNights} days` : null;
 
       return {
-        _id:           t._id,
+        slug:          t.slug,
         title:         t.title,
         destination:   t.destination,
         country:       t.country,
@@ -122,7 +122,7 @@ async function createTravel(req, res) {
  */
 async function getTravel(req, res) {
   try {
-    const travel = await Travel.findById(req.params.id).populate('itinerary');
+    const travel = await Travel.findOne({ slug: req.params.slug }).populate('itinerary');
 
     if (!travel) {
       return res.status(404).json({ message: 'Travel not found' });
@@ -130,9 +130,6 @@ async function getTravel(req, res) {
 
     res.json(travel);
   } catch (err) {
-    if (err.name === 'CastError') {
-      return res.status(400).json({ message: 'Invalid travel id' });
-    }
     console.error('getTravel error:', err);
     res.status(500).json({ message: 'Internal server error' });
   }
@@ -143,7 +140,7 @@ async function getTravel(req, res) {
  */
 async function updateTravel(req, res) {
   try {
-    const travel = await Travel.findById(req.params.id);
+    const travel = await Travel.findOne({ slug: req.params.slug });
 
     if (!travel) {
       return res.status(404).json({ message: 'Travel not found' });
