@@ -10,16 +10,16 @@ const TravelOptions = ({ travels }) => {
             <div className="travel-grid">
                 {travels.map((travel) => (
                     <TravelCard
-                        key={travel.id}
+                        key={travel._id}
                         title={travel.title}
                         description={travel.description}
                         rating={travel.rating}
                         departureCity={travel.departureCity}
-                        destinationCity={travel.destinationCity}
-                        imageUrl={travel.imageUrl}
-                        averagePrice={travel.averagePrice}
+                        destination={travel.destination}
+                        coverImage={travel.coverImage}
+                        pricePerPerson={travel.pricePerPerson}
                         duration={travel.duration}
-                        travelers={travel.travelers}
+                        maxGroupSize={travel.maxGroupSize}
                         country={travel.country}
                         tags={travel.tags}
                     />

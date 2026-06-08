@@ -4,16 +4,16 @@ const TravelCard = ({
     title,
     rating,
     departureCity,
-    destinationCity,
-    imageUrl,
-    averagePrice,
+    destination,
+    coverImage,
+    pricePerPerson,
     duration,
-    travelers,
+    maxGroupSize,
 }) => {
     return (
         <article className="travel-card">
             <img
-                src={imageUrl}
+                src={coverImage}
                 alt={title}
                 className="travel-card-image"
             />
@@ -28,7 +28,7 @@ const TravelCard = ({
                 </div>
 
                 <p className="travel-route">
-                    📍 {departureCity} → {destinationCity}
+                    📍 {departureCity} → {destination}
                 </p>
 
                 {duration && (
@@ -37,9 +37,9 @@ const TravelCard = ({
                     </p>
                 )}
 
-                {travelers && (
+                {maxGroupSize && (
                     <p className="travel-travelers">
-                        👥 {travelers} travelers
+                        👥 {maxGroupSize} travelers
                     </p>
                 )}
 
@@ -50,7 +50,7 @@ const TravelCard = ({
                         </p>
 
                         <p className="travel-price">
-                            ${averagePrice}
+                            ${pricePerPerson}
                             <span>/person</span>
                         </p>
                     </div>
