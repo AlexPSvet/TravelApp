@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { IoArrowDownCircle } from "react-icons/io5";
+
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import AnimatedTitle from '../components/AnimatedTitle';
@@ -141,9 +143,7 @@ const Home = () => {
                     </div>
                 </div>
 
-                <div className="home-hero-scroll-hint" aria-hidden="true">
-                    <span />
-                </div>
+                <IoArrowDownCircle className="home-hero-scroll-hint" />
             </section>
 
             <div className="home-stats">

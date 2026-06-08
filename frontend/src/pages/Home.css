@@ -107,7 +107,7 @@
 }
 @keyframes scroll-pulse {
     0%, 100% { transform: translateY(0); opacity: 1; }
-    50%       { transform: translateY(8px); opacity: 0.4; }
+    50%       { transform: translateY(8px); opacity: 0.9; }
 }
 
 .home-hero {
@@ -195,15 +195,8 @@
     bottom: 2rem;
     left: 50%;
     z-index: 1;
-    transform: rotate(45deg);
-}
-
-.home-hero-scroll-hint span {
-    display: block;
-    width: 22px;
-    height: 22px;
-    border-right: 2px solid rgba(255, 255, 255, 0.5);
-    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+    font-size: 2.5rem;
+    color: #c89089;
     animation: scroll-pulse 1.6s ease-in-out infinite;
 }
 
