@@ -1,10 +1,12 @@
 .animated-title {
     font-size: clamp(3rem, 6vw, 5.5rem);
+    color: white;
     font-family: 'PacificoRegular', 'Times New Roman';
     font-weight: 800;
     line-height: 1.1;
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
